@@ -49,8 +49,8 @@ class DiffusionSceneLayout_DDPM(Module):
                 os.environ["HF_HUB_CACHE"] = "./ssw_cache"
                 os.environ["HF_HOME"] = "./ssw_cache"
 
-                self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
-                self.bertmodel = BertModel.from_pretrained("bert-base-cased")
+                self.tokenizer = BertTokenizer.from_pretrained('SeungWonSeo/bert-base-cased')
+                self.bertmodel = BertModel.from_pretrained("SeungWonSeo/bert-base-cased")
 
                 for p in self.bertmodel.parameters():
                     p.requires_grad = False
