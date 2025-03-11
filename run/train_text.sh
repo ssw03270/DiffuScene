@@ -1,6 +1,6 @@
 cd ./scripts
 
-exp_dir="your experiment directory"
+exp_dir="outputs"
 
 #### bedrooms
 config="../config/text/diffusion_bedrooms_instancond_lat32_v_bert.yaml"
