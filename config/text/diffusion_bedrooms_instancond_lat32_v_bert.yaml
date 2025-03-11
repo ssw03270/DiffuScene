@@ -1,7 +1,7 @@
 data:
     dataset_type: "cached_threedfront"
     encoding_type: "cached_diffusion_text_cosin_angle_objfeatsnorm_lat32_wocm" # textfix for eval  "cached_diffusion_textfix_cosin_angle_objfeatsnorm_lat32_wocm"
-    dataset_directory: "./dataset/3d_front_processed/bedrooms_objfeats_32_64"
+    dataset_directory: "../../../dataset/3d_front_processed/bedrooms_objfeats_32_64"
     annotation_file: "../config/bedroom_threed_front_splits.csv"
     path_to_invalid_scene_ids: "../config/invalid_threed_front_rooms.txt"
     path_to_invalid_bbox_jids: "../config/black_list.txt"
