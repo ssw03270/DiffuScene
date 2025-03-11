@@ -44,8 +44,11 @@ class DiffusionSceneLayout_DDPM(Module):
                     p.requires_grad = False
                 print('use text as condition, and pretrained clip embedding')
             else:
-                self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased', cache_dir='./cache')
-                self.bertmodel = BertModel.from_pretrained("bert-base-cased", cache_dir='./cache')
+                import os
+                os.environ["TRANSFORMERS_CACHE"] = "./cache"
+
+                self.tokenizer = BertTokenizer.from_pretrained('huggingface.co/bert-base-cased')
+                self.bertmodel = BertModel.from_pretrained("huggingface.co/bert-base-cased")
 
                 for p in self.bertmodel.parameters():
                     p.requires_grad = False
