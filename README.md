@@ -35,6 +35,11 @@ cd ChamferDistancePytorch/chamfer3D
 python setup.py install
 ```
 
+https://pypi.org/project/torchtext/
+```
+pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 torchtext==0.16.0 --index-url https://download.pytorch.org/whl/cu121
+```
+
 ## Pretrained models
 The pretrained models of DiffuScene and ShapeAutoEncoder can be downloaded from [here](https://drive.google.com/drive/folders/1EhvyNCAWWto6vMt0vXWMKBoSdYR_9pC2?usp=drive_link).
 
