@@ -62,6 +62,7 @@ from operator import methodcaller
 
 import nltk
 from nltk.corpus import cmudict
+nltk.download('cmudict')
 
 """
 Taken from https://stackoverflow.com/questions/20336524/verify-correct-use-of-a-and-an-in-english-texts-python
