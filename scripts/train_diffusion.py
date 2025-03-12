@@ -253,6 +253,7 @@ def main(argv):
                 optimizer,
                 experiment_directory,
             )
+        if accelerator.is_main_process:
             StatsLogger.instance().clear()
 
         # Validation loop every val_every epochs (only main process prints logs)
