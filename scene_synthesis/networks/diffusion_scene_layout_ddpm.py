@@ -459,24 +459,12 @@ class DiffusionSceneLayout_DDPM(Module):
             }
 
 def train_on_batch(model, optimizer, sample_params, config):
-    # Make sure that everything has the correct size
     optimizer.zero_grad()
-    # Compute the loss
     loss, loss_dict = model.get_loss(sample_params)
     for k, v in loss_dict.items():
         StatsLogger.instance()[k].value = v.item()
-    # Do the backpropagation
-    loss.backward()
-    # Compuite model norm
-    grad_norm = clip_grad_norm_(model.parameters(), config["training"]["max_grad_norm"])
-    StatsLogger.instance()["gradnorm"].value = grad_norm.item()
-    # log learning rate
-    StatsLogger.instance()["lr"].value = optimizer.param_groups[0]['lr']
-    # Do the update
-    optimizer.step()
-
-    return loss.item()
-
+    # accelerator.backward()에서 backward 호출할 것이므로 여기서는 제거합니다.
+    return loss  # tensor 반환
 
 @torch.no_grad()
 def validate_on_batch(model, sample_params, config):
