@@ -230,11 +230,11 @@ def main(argv):
         network.train()
         for b, sample in enumerate(train_loader):
             # Accelerator automatically handles device placement for batch data.
-            batch_loss = train_on_batch(network, optimizer, sample, config)
+            batch_loss = train_on_batch(accelerator.unwrap_model(network), optimizer, sample, config)
             accelerator.backward(batch_loss)
 
             # gradient clipping과 optimizer.step()은 backward 호출 후에 진행합니다.
-            grad_norm = clip_grad_norm_(network.parameters(), config["training"]["max_grad_norm"])
+            grad_norm = clip_grad_norm_(accelerator.unwrap_model(network).parameters(), config["training"]["max_grad_norm"])
             StatsLogger.instance()["gradnorm"].value = grad_norm.item()
             StatsLogger.instance()["lr"].value = optimizer.param_groups[0]['lr']
             optimizer.step()
@@ -260,7 +260,7 @@ def main(argv):
                 print("====> Validation Epoch ====>")
             network.eval()
             for b, sample in enumerate(val_loader):
-                batch_loss = validate_on_batch(network, sample, config)
+                batch_loss = validate_on_batch(accelerator.unwrap_model(network), sample, config)
                 avg_loss_val = accelerator.gather(batch_loss).mean().item()
                 if accelerator.is_main_process:
                     StatsLogger.instance().print_progress(-1, b+1, avg_loss_val)
