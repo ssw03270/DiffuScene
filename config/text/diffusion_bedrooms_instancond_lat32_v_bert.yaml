@@ -76,7 +76,7 @@ training:
     epochs: 15000
     steps_per_epoch: 500
     batch_size: 128
-    save_frequency: 2000
+    save_frequency: 1000
     max_grad_norm: 10
     # optimizer
     optimizer: Adam
@@ -84,7 +84,7 @@ training:
     # schedule
     schedule: 'step'
     lr: 0.0002
-    lr_step: 10000
+    lr_step: 2500
     lr_decay: 0.5
     # schedule: 'lambda'
     # start_lr: 0.0002
