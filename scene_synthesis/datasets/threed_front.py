@@ -381,6 +381,8 @@ class CachedThreedFront(ThreedFront):
         )
 
     def _parse_train_stats(self, train_stats):
+        current_dir = os.getcwd()
+        print(f"현재 작업 디렉토리: {current_dir}")
         with open(os.path.join(self._base_dir, train_stats), "r") as f:
             train_stats = json.load(f)
         self._centroids = train_stats["bounds_translations"]
