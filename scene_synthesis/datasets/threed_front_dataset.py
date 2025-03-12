@@ -619,6 +619,8 @@ class OrderedDataset(DatasetDecoratorBase):
 import random
 import torchtext
 from num2words import num2words
+import nltk
+nltk.download('punkt_tab')
 from nltk.tokenize import word_tokenize
 from .utils_text import compute_rel, get_article
 from collections import Counter, defaultdict
