@@ -233,16 +233,16 @@ def main(argv):
             batch_loss = train_on_batch(network, optimizer, sample, config)
             accelerator.backward(batch_loss)
 
-            # Aggregate loss from all processes and compute average loss
-            avg_loss = accelerator.gather(batch_loss).mean().item()
-            if accelerator.is_main_process:
-                StatsLogger.instance().print_progress(i+1, b+1, avg_loss)
-
             # gradient clipping과 optimizer.step()은 backward 호출 후에 진행합니다.
             grad_norm = clip_grad_norm_(network.parameters(), config["training"]["max_grad_norm"])
             StatsLogger.instance()["gradnorm"].value = grad_norm.item()
             StatsLogger.instance()["lr"].value = optimizer.param_groups[0]['lr']
             optimizer.step()
+            
+            # Aggregate loss from all processes and compute average loss
+            avg_loss = accelerator.gather(batch_loss).mean().item()
+            if accelerator.is_main_process:
+                StatsLogger.instance().print_progress(i+1, b+1, avg_loss)
 
         # Checkpoint saving (only main process)
         if accelerator.is_main_process and (i % save_every) == 0:
