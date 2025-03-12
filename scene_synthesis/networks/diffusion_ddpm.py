@@ -135,10 +135,7 @@ class GaussianDiffusion:
         self.loss_separate = loss_separate
         self.loss_iou = loss_iou
         if self.loss_iou:
-            import os
-            current_dir = os.getcwd()
-            print(f"현재 작업 디렉토리: {current_dir}")
-            with open(os.path.join(train_stats_file), "r") as f:
+            with open(train_stats_file, "r") as f:
                 train_stats = json.load(f)
             self._centroids = train_stats["bounds_translations"]
             self._centroids = (np.array(self._centroids[:3]), np.array(self._centroids[3:]))
