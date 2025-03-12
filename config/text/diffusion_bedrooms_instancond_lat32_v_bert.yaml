@@ -73,7 +73,7 @@ feature_extractor:
 
 training:
     splits: ["train", "val"]
-    epochs: 60000
+    epochs: 15000
     steps_per_epoch: 500
     batch_size: 128
     save_frequency: 2000
