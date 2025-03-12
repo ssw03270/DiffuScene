@@ -235,8 +235,9 @@ def main(argv):
 
             # gradient clipping과 optimizer.step()은 backward 호출 후에 진행합니다.
             grad_norm = clip_grad_norm_(accelerator.unwrap_model(network).parameters(), config["training"]["max_grad_norm"])
-            StatsLogger.instance()["gradnorm"].value = grad_norm.item()
-            StatsLogger.instance()["lr"].value = optimizer.param_groups[0]['lr']
+            if accelerator.is_main_process:
+                StatsLogger.instance()["gradnorm"].value = grad_norm.item()
+                StatsLogger.instance()["lr"].value = optimizer.param_groups[0]['lr']
             optimizer.step()
             
             # Aggregate loss from all processes and compute average loss
