@@ -472,4 +472,4 @@ def validate_on_batch(model, sample_params, config):
     loss, loss_dict = model.get_loss(sample_params)
     for k, v in loss_dict.items():
         StatsLogger.instance()[k].value = v.item()
-    return loss.item()
+    return loss  # tensor 반환
