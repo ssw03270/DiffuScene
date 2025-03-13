@@ -810,7 +810,7 @@ class Add_Text(DatasetDecoratorBase):
 
     def add_glove_embeddings(self, sample):
         print(sample['description'])
-        print(sample['description'][:self.max_sentences]
+        print(sample['description'][:self.max_sentences])
         exit()
         sentence = ''.join(sample['description'][:self.max_sentences])
         sample['description'] = sentence
