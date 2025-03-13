@@ -811,6 +811,7 @@ class Add_Text(DatasetDecoratorBase):
     def add_glove_embeddings(self, sample):
         # sentence = ''.join(sample['description'][:self.max_sentences])
         # sample['description'] = sentence
+        sentence = sample['description']
         tokens = list(word_tokenize(sentence))
         # pad to maximum length
         tokens += ['<pad>'] * (self.max_token_length - len(tokens))
