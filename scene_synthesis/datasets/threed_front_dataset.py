@@ -809,6 +809,7 @@ class Add_Text(DatasetDecoratorBase):
         return sample
 
     def add_glove_embeddings(self, sample):
+        import re
         print(sample['description'])
         sentences = [s.strip() for s in re.split(r'(?<=[.?!])\s*', sample['description']) if s]
         print(sentences)
