@@ -693,8 +693,6 @@ class Add_Text(DatasetDecoratorBase):
             sample['description'] = str is a sentence
             eg: 'The room contains a bed, a table and a chair. The chair is next to the window'
         '''
-        print(sample)
-        exit()
         sentences = []
         # clean object names once
         classes = self.class_labels
