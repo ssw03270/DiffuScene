@@ -348,8 +348,6 @@ class CachedThreedFront(ThreedFront):
 
     def get_room_params(self, i):
         D = np.load(self._path_to_rooms[i])
-        print(self._path_to_rooms[i])
-        exit()
         room_rgb_2d = self.config.get('room_rgb_2d', False)
         if room_rgb_2d:
             room = self._get_room_rgb_2d(self._path_to_renders[i])
@@ -370,6 +368,11 @@ class CachedThreedFront(ThreedFront):
             data_dict[ "objfeats" ] = D["objfeats"]
         if "objfeats_32" in D.keys():
             data_dict[ "objfeats_32" ] = D["objfeats_32"]
+
+        txt_file_path = self._path_to_rooms[i].replace("boxes.npz", "text_instruction.txt")
+        with open(txt_file_path, "r", encoding="utf-8") as file:
+            content = file.read()  # 파일의 모든 내용을 읽어옴
+            data_dict["description"] = content
         
         return data_dict
 
