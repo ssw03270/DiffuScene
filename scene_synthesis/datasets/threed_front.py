@@ -348,7 +348,8 @@ class CachedThreedFront(ThreedFront):
 
     def get_room_params(self, i):
         D = np.load(self._path_to_rooms[i])
-        
+        print(self._path_to_rooms[i])
+        exit()
         room_rgb_2d = self.config.get('room_rgb_2d', False)
         if room_rgb_2d:
             room = self._get_room_rgb_2d(self._path_to_renders[i])
