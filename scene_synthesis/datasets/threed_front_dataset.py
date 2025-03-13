@@ -649,10 +649,10 @@ class Add_Text(DatasetDecoratorBase):
 
 
         # Add relationship between objects
-        sample = self.add_relation(sample)
+        # sample = self.add_relation(sample)
 
         # Add description
-        sample = self.add_description(sample)
+        # sample = self.add_description(sample)
         
         sample = self.add_glove_embeddings(sample)
         return sample
@@ -809,6 +809,9 @@ class Add_Text(DatasetDecoratorBase):
         return sample
 
     def add_glove_embeddings(self, sample):
+        print(sample['description'])
+        print(sample['description'][:self.max_sentences]
+        exit()
         sentence = ''.join(sample['description'][:self.max_sentences])
         sample['description'] = sentence
         tokens = list(word_tokenize(sentence))
