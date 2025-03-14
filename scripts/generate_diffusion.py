@@ -243,6 +243,10 @@ def main(argv):
         print("{} / {}: Using the {} floor plan of scene {}".format(
             i, args.n_sequences, scene_idx, current_scene.scene_id)
         )
+        # Get a floor plan
+        floor_plan, tr_floor, room_mask = floor_plan_from_scene(
+            current_scene, args.path_to_floor_plan_textures, no_texture=args.no_texture
+        )
 
         bbox_params = network.generate_layout(
                 room_mask=room_mask.to(device),
