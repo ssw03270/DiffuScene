@@ -21,6 +21,8 @@ from scene_synthesis.datasets import filter_function, get_dataset_raw_and_encode
 from scene_synthesis.datasets.threed_future_dataset import ThreedFutureDataset
 from scene_synthesis.networks import build_network
 
+from tqdm import tqdm
+
 def categorical_kl(p, q):
     return (p * (np.log(p + 1e-6) - np.log(q + 1e-6))).sum()
 
@@ -229,7 +231,7 @@ def main(argv):
 
     classes = np.array(dataset.class_labels)
     print('class labels:', classes, len(classes))
-    for i in range(args.n_sequences):
+    for i in tqdm(range(args.n_sequences)):
         if args.fix_order:
             if i < len(dataset):
                 scene_idx = given_scene_id or i
