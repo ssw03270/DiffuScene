@@ -231,15 +231,8 @@ def main(argv):
 
     classes = np.array(dataset.class_labels)
     print('class labels:', classes, len(classes))
-    for i in tqdm(range(args.n_sequences)):
-        if args.fix_order:
-            if i < len(dataset):
-                scene_idx = given_scene_id or i
-            else:
-                scene_idx = given_scene_id or (i % len(dataset))
-        else:
-            scene_idx = given_scene_id or np.random.choice(len(dataset))
-            
+    for i in tqdm(range(len(dataset))):
+        scene_idx = i
         current_scene = raw_dataset[scene_idx]
         samples = dataset[scene_idx]
         print("{} / {}: Using the {} floor plan of scene {}".format(
