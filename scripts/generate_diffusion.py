@@ -260,13 +260,19 @@ def main(argv):
             boxes["sizes"],
             boxes["angles"]
         ], dim=-1).cpu().numpy()
-        path_to_npy = os.path.join(
-            args.output_directory,
-            "{}.npy".format(current_scene.scene_id)
-        )
-        np.save(path_to_npy, bbox_params_t)  # bbox_params_t를 npy 파일로 저장
         print('Generated bbox:', bbox_params_t.shape)
-
+        
+        objfeats = boxes["objfeats"].cpu().numpy()
+        
+        # 저장할 npz 파일 경로 생성
+        path_to_npz = os.path.join(
+            args.output_directory,
+            "{}.npz".format(current_scene.scene_id)
+        )
+        
+        # npz 파일에 두 배열을 저장 (키를 이용해 각각 접근 가능)
+        np.savez(path_to_npz, bbox_params=bbox_params_t, objfeats=objfeats)
+        
         if "description" in samples.keys():
             path_to_texts = os.path.join(
                 args.output_directory,
