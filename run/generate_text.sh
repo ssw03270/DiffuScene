@@ -16,7 +16,7 @@ hostname
 # scripts 폴더로 이동
 cd ./scripts
 
-exp_dir="../outputs"
+exp_dir="outputs"
 
 ####'bedrooms'
 config="../config/text/diffusion_bedrooms_instancond_lat32_v_bert.yaml"
