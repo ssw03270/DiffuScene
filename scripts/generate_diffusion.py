@@ -267,7 +267,7 @@ def main(argv):
         ], dim=-1).cpu().numpy()
         path_to_npy = os.path.join(
             args.output_directory,
-            "{}_{}_{:03d}_bbox.npy".format(current_scene.scene_id, scene_idx, i)
+            "{}.npy".format(current_scene.scene_id)
         )
         np.save(path_to_npy, bbox_params_t)  # bbox_params_t를 npy 파일로 저장
         print('Generated bbox:', bbox_params_t.shape)
@@ -275,7 +275,7 @@ def main(argv):
         if "description" in samples.keys():
             path_to_texts = os.path.join(
                 args.output_directory,
-                "{}_{}_{:03d}_text.txt".format(current_scene.scene_id, scene_idx, i)
+                "{}.txt".format(current_scene.scene_id)
             )
             print('the length of samples[description]: {:d}'.format( len(samples['description']) ) )
             print('text description {}'.format( samples['description']) )
