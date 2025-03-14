@@ -21,7 +21,7 @@ exp_dir="../outputs"
 ####'bedrooms'
 config="../config/text/diffusion_bedrooms_instancond_lat32_v_bert.yaml"
 exp_name="diffusion_bedrooms_instancond_lat32_v_bert"
-model_name="model_5000"
+model_name="model_6000"
 weight_file=$exp_dir/$exp_name/$model_name.pt
 threed_future='../dataset/3d_front_processed/threed_future_model_bedroom.pkl'
 
