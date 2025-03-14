@@ -16,7 +16,6 @@ import numpy as np
 import torch
 
 from training_utils import load_config
-from utils import floor_plan_from_scene, export_scene, get_textured_objects_in_scene
 
 from scene_synthesis.datasets import filter_function, get_dataset_raw_and_encoded
 from scene_synthesis.datasets.threed_future_dataset import ThreedFutureDataset
@@ -244,9 +243,8 @@ def main(argv):
         print("{} / {}: Using the {} floor plan of scene {}".format(
             i, args.n_sequences, scene_idx, current_scene.scene_id)
         )
-        # Get a floor plan
-        floor_plan, tr_floor, room_mask = floor_plan_from_scene(
-            current_scene, args.path_to_floor_plan_textures, no_texture=args.no_texture
+        room_mask = torch.from_numpy(
+            np.transpose(current_scene.room_mask[None, :, :, 0:1], (0, 3, 1, 2))
         )
 
         bbox_params = network.generate_layout(
