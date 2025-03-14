@@ -16,6 +16,7 @@ import numpy as np
 import torch
 
 from training_utils import load_config
+from utils import floor_plan_from_scene, export_scene, get_textured_objects_in_scene
 
 from scene_synthesis.datasets import filter_function, get_dataset_raw_and_encoded
 from scene_synthesis.datasets.threed_future_dataset import ThreedFutureDataset
