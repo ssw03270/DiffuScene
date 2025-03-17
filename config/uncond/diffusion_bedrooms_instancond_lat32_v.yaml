@@ -18,7 +18,7 @@ network:
     # concate squarewish layer
     point_dim: 62 #29
     latent_dim: 0
-    room_mask_condition: false # not use room_mask 
+    room_mask_condition: true # not use room_mask
     sample_num_points: 12 # max_length 
 
     objectness_dim: 0

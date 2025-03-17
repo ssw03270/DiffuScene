@@ -266,6 +266,9 @@ class DiffusionSceneLayout_DDPM(Module):
         else:
             condition = None
 
+        print("room_layout_f:", room_layout_f.shape, "condition:", condition.shape)
+        exit()
+
         # concat room_partial condition, use partial boxes as input for scene completion
         if self.room_partial_condition:
             zeros_boxes = torch.zeros((batch_size, num_points-partial_boxes.shape[1], partial_boxes.shape[2])).float().to(device)
