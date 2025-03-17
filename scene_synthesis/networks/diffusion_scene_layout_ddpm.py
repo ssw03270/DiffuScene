@@ -195,7 +195,7 @@ class DiffusionSceneLayout_DDPM(Module):
         else:
             condition = None
 
-        print("room_layout_f:", room_layout_f.shape, "condition:", condition.shape)
+        print("room_layout_f:", room_layout_f.shape, "condition:", condition.shape, "instan_condition_f:", instan_condition_f.shape)
         exit()
 
         # concat room_partial  condition
