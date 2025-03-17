@@ -54,7 +54,7 @@ network:
         angle_dim: 2
         objfeat_dim: 32
         context_dim: 0
-        instanclass_dim: 128 
+        instanclass_dim: 256
         seperate_all: true  
 
 feature_extractor:
