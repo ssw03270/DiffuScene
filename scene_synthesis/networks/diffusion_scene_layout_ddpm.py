@@ -170,7 +170,7 @@ class DiffusionSceneLayout_DDPM(Module):
             
         else:
             room_layout_f = None
-
+        print("room_layout_f:", room_layout_f.shape)
         device = class_labels.device
 
         # process instance & class condition f
