@@ -170,7 +170,7 @@ class DiffusionSceneLayout_DDPM(Module):
             
         else:
             room_layout_f = None
-        print("room_layout_f:", room_layout_f.shape)
+
         device = class_labels.device
 
         # process instance & class condition f
@@ -194,9 +194,6 @@ class DiffusionSceneLayout_DDPM(Module):
             condition = instan_condition_f
         else:
             condition = None
-
-        print("room_layout_f:", room_layout_f.shape, "condition:", condition.shape, "instan_condition_f:", instan_condition_f.shape)
-        exit()
 
         # concat room_partial  condition
         if self.room_partial_condition:

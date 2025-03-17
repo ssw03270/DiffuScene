@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #SBATCH -J diffusion_train
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:4
 #SBATCH --cpus-per-gpu=8
 #SBATCH --mem-per-gpu=29G
 #SBATCH -p batch_grad
